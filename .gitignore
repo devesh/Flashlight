@@ -3,9 +3,11 @@
 build/
 gen/
 out/
+proguard_logs/
 
 .DS_Store
 local.properties
 *.apk
 *.iml
 *.keystore
+

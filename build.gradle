@@ -1,0 +1,19 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.2'
+    }
+}
+apply plugin: 'android'
+
+android {
+    target = 'android-17'
+    defaultConfig {
+        versionCode = 5
+        versionName = "3"
+        signingStoreLocation = 'devesh.keystore'
+        signingKeyAlias = 'deveshandroid'
+    }
+}

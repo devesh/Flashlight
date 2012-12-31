@@ -27,7 +27,11 @@ public class Flashlight extends Activity {
         super.onCreate(savedInstanceState);
         Window window = getWindow();
         // Flashlights should be bright.
-        window.getAttributes().screenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_FULL;
+        WindowManager.LayoutParams params = window.getAttributes();
+        params.screenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_FULL;
+        // params.buttonBrightness was added in API level 8. The additional brightness is not worth the added code size.
+        // The screen will go to max brightness even without the following line, but the API doesn't guarantee it.
+        window.setAttributes(params);
         window.addFlags(
                 // Use the power button to turn flashlight off and on, even if you have a lock screen.
                 WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED

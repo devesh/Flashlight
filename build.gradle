@@ -3,17 +3,36 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.2'
+        classpath 'com.android.tools.build:gradle:0.4'
     }
 }
 apply plugin: 'android'
 
+task wrapper(type: Wrapper) {
+    gradleVersion '1.6'
+}
+
 android {
-    target = 'android-17'
+    compileSdkVersion 17
+    buildToolsVersion '17.0.0'
+
     defaultConfig {
-        versionCode = 5
-        versionName = "3"
-        signingStoreLocation = 'devesh.keystore'
-        signingKeyAlias = 'deveshandroid'
+        versionCode 5
+        versionName '3'
+        minSdkVersion 3
+        targetSdkVersion 17
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('devesh.keystore')
+            keyAlias 'deveshandroid'
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
     }
 }

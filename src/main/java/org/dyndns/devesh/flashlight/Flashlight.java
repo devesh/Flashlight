@@ -36,7 +36,9 @@ public class Flashlight extends Activity {
                 // Use the power button to turn flashlight off and on, even if you have a lock screen.
                 WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
                         // We won't do anything with touch events. Don't bother sending them to us.
-                        | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+                        // Unfortunately, there is a platform bug that still exists in 4.2 (!) that causes ANRs if this
+                        // flag is set.
+                        // | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
                         // A flashlight that turns itself off isn't a good flashlight.
                         | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
                         // Turn the screen on if it isn't already on when launching (e.g., from ADB).

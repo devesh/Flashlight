@@ -17,8 +17,8 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="org.dyndns.devesh.flashlight"
-          android:versionCode="5"
-          android:versionName="3"
+          android:versionCode="6"
+          android:versionName="3.0.1"
           android:installLocation="auto">
     <!-- Window.LayoutParams.screenBrightness was added in Cupcake. -->
     <uses-sdk android:minSdkVersion="3" android:targetSdkVersion="17"/>

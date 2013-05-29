@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.4'
+        classpath 'com.android.tools.build:gradle:0.4.1'
     }
 }
 apply plugin: 'android'
@@ -30,6 +30,8 @@ android {
 
     buildTypes {
         release {
+            runProguard true
+            proguardFile 'proguard.cfg'
             signingConfig signingConfigs.release
         }
     }

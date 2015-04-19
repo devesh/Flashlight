@@ -1,38 +1,53 @@
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.5.+'
+        classpath 'com.android.tools.build:gradle:1.1.3'
     }
 }
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 task wrapper(type: Wrapper) {
-    gradleVersion '1.6'
+    gradleVersion '2.3'
 }
 
 android {
-    compileSdkVersion 17
-    buildToolsVersion '17.0.0'
+    compileSdkVersion 22
+    buildToolsVersion '22.0.1'
 
     defaultConfig {
         minSdkVersion 3
-        targetSdkVersion 17
+        targetSdkVersion 22
+    }
+
+    productFlavors {
+        cupcake {
+            versionCode 3000
+        }
+        immersive {
+            versionCode 11000
+            minSdkVersion 11
+        }
     }
 
     signingConfigs {
         release {
             storeFile file('devesh.keystore')
-            keyAlias 'deveshandroid'
+            storePassword System.getenv("KSTOREPWD")
+            keyPassword System.getenv("KEYPWD")
+            keyAlias 'flashlight'
         }
     }
 
     buildTypes {
         release {
-            runProguard true
-            proguardFile 'proguard.cfg'
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
             signingConfig signingConfigs.release
+        }
+        debug {
+            debuggable true
         }
     }
 }

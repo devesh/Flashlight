@@ -14,10 +14,13 @@
  *    limitations under the License.
  */
 
-package org.dyndns.devesh.flashlight;
+package devesh.flashlight;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
